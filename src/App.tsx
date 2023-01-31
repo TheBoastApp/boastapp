@@ -1,23 +1,26 @@
 import React from "react";
 import "./App.css";
+import User from "./components/User";
 
 function App() {
+  {
+    console.log("hi kat");
+  }
+  const showUsers = true;
   return (
     <div className="App">
-      <header className="App-header">
-        <p>Hello!</p>
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {showUsers ? (
+        <>
+          <User name="Hannah" />
+          <User name="Kat" role="Software Engineer" />
+        </>
+      ) : (
+        <p>you can't see the user</p>
+      )}
+
+      <p>
+        Edit <code>src/App.tsx</code> and save to reload.
+      </p>
     </div>
   );
 }
