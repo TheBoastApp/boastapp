@@ -3,6 +3,7 @@ import "./index.css";
 import Win from "./components/Win";
 import { useState } from "react";
 import AddWin from "./components/AddWin";
+import EditWin from "./components/EditWin";
 import { v4 as uuidv4 } from "uuid";
 
 function App() {
@@ -58,13 +59,21 @@ function App() {
           ></input>
           <div className="flex flex-wrap justify-center">
             {wins.map((win) => {
+              const editWin = (
+                <EditWin
+                  id={win.id}
+                  name={win.name}
+                  description={win.description}
+                  updateWin={updateWin}
+                />
+              );
               return (
                 <Win
                   key={win.id}
                   id={win.id}
                   name={win.name}
                   description={win.description}
-                  updateWin={updateWin}
+                  editWin={editWin}
                 />
               );
             })}

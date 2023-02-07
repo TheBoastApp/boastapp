@@ -33,6 +33,8 @@ function AddWin(props: any) {
             onSubmit={(e) => {
               handleClose();
               e.preventDefault();
+              setName("");
+              setDescription("");
               props.newWin(name, description);
             }}
             id="addmodal"

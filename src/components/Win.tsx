@@ -10,12 +10,7 @@ function Win(props: any) {
             {props.description ? props.description : "Never had a job"}
           </p>
         </div>
-        <EditWin
-          id={props.id}
-          name={props.name}
-          description={props.description}
-          updateWin={props.updateWin}
-        />
+        {props.editWin}
       </div>
     </div>
   );
