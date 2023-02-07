@@ -1,73 +1,66 @@
 import React from "react";
 import "./index.css";
-import User from "./components/User";
+import Win from "./components/Win";
 import { useState } from "react";
 // import { v4 as uuidv4 } from "uuid";
 
 function App() {
-  const [role, setRole] = useState("bird");
-  const [users, setUsers] = useState([
+  const [description, setDescription] = useState("learning");
+  const [wins, setWins] = useState([
     {
       id: 1,
-      name: "Hannah",
-      role: "Never had a job",
-      image:
-        "https://media.licdn.com/dms/image/D5603AQEnbNh-48HU6Q/profile-displayphoto-shrink_400_400/0/1672980786363?e=1680739200&v=beta&t=94FLpb3vXQKHTidgVJWrMN-nh4qH7ysgvUE5jLBurvg",
+      name: "Learned React",
+      description: "Watched literally so much YouTube",
     },
     {
       id: 2,
-      name: "Kat",
-      role: "Software Engineer",
-      image:
-        "https://media.licdn.com/dms/image/D5603AQEjcre84lMKFQ/profile-displayphoto-shrink_400_400/0/1663706177584?e=1680739200&v=beta&t=zfGJNvfJfW3J771M99OP_KFzXGZpsyH1iIf4HFGhHk0",
+      name: "Made a webapp",
+      description: "Sweating and crying",
     },
     {
       id: 3,
-      name: "Baby",
-      role: "bird",
-      image:
-        "https://images.pexels.com/photos/1661179/pexels-photo-1661179.jpeg?",
+      name: "Fell asleep doing homework",
+      description: "oops",
     },
   ]);
 
-  function updateUser(id: number, newName: string, newRole: string) {
-    const updatedUsers = users.map((user) => {
-      if (id == user.id) {
-        return { ...user, name: newName, role: newRole };
+  function updateWin(id: number, newName: string, newDescription: string) {
+    const updatedWins = wins.map((win) => {
+      if (id === win.id) {
+        return { ...win, name: newName, description: newDescription };
       }
-      return user;
+      return win;
     });
-    setUsers(updatedUsers);
+    setWins(updatedWins);
   }
 
-  const showUsers = true;
+  const showWins = true;
   return (
     <div className="App">
-      {showUsers ? (
+      {showWins ? (
         <>
           <input
             type="text"
             onChange={(e) => {
-              setRole(e.target.value);
+              setDescription(e.target.value);
             }}
           ></input>
           <div className="flex flex-wrap justify-center">
-            {users.map((user) => {
+            {wins.map((win) => {
               return (
-                <User
-                  key={user.id}
-                  id={user.id}
-                  name={user.name}
-                  role={user.role}
-                  image={user.image}
-                  updateUser={updateUser}
+                <Win
+                  key={win.id}
+                  id={win.id}
+                  name={win.name}
+                  description={win.description}
+                  updateWin={updateWin}
                 />
               );
             })}
           </div>
         </>
       ) : (
-        <p>you can't see the user</p>
+        <p>you can't see the win</p>
       )}
 
       <p>
