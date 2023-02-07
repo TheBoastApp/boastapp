@@ -2,6 +2,7 @@ import React from "react";
 import "./index.css";
 import Win from "./components/Win";
 import { useState } from "react";
+import Header from "./components/Header";
 import AddWin from "./components/AddWin";
 import EditWin from "./components/EditWin";
 import { v4 as uuidv4 } from "uuid";
@@ -47,17 +48,12 @@ function App() {
 
   const showWins = true;
   return (
-    <div className="App">
+    <div className="App bg-blue-400 min-h-screen">
+      <Header />
       <AddWin newWin={newWin} />
       {showWins ? (
         <>
-          <input
-            type="text"
-            onChange={(e) => {
-              setDescription(e.target.value);
-            }}
-          ></input>
-          <div className="flex flex-wrap justify-center">
+          <div className="flex flex-wrap justify-center my-2">
             {wins.map((win) => {
               const editWin = (
                 <EditWin
