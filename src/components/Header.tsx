@@ -1,6 +1,10 @@
+import React from "react";
 import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import { useState } from "react";
+
+import ProfileButton from "./ProfileButton";
 
 const navigation = [
   { name: "Sweating", href: "#", current: true },
@@ -13,7 +17,11 @@ function classNames(...classes: any[]) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function Header() {
+const Header = (props: any) => {
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [userProfile, setUserProfile] = useState('');
+  const defaultProfilePic = 'profile_icon.png';
+
   return (
     <Disclosure as="nav" className="bg-purple-600">
       {({ open }) => (
@@ -75,6 +83,7 @@ export default function Header() {
 
                 {/* Profile dropdown */}
                 <Menu as="div" className="relative ml-3">
+                <ProfileButton src={loggedIn? userProfile : defaultProfilePic} alt={loggedIn? 'loggedIn' : 'notLoggedIn'} />
                   <div>
                     <Menu.Button className="flex rounded-full bg-purple-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                       <span className="sr-only">Open user menu</span>
@@ -165,4 +174,6 @@ export default function Header() {
       )}
     </Disclosure>
   );
-}
+};
+
+export default Header;

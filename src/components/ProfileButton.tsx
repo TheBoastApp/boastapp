@@ -3,9 +3,15 @@ const ProfileButton = (props: any) => {
   const onClick = () => console.log('clicked!');
   console.log("Hello there");
 
+  const profileButtonStyle = {
+    width: "75px",
+    padding: "10px",
+    borderRadius: "50%",
+  };
+
   return (
     <div>
-    <img src={props.src} onClick={onClick} alt={props.alt}/>
+    <img style={profileButtonStyle} src={props.src} onClick={onClick} alt={props.alt}/>
     </div>
   );
 };

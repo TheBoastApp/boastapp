@@ -1,14 +1,17 @@
 import React from "react";
 import "./index.css";
-import Win from "./components/Win";
 import { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
+
 import Header from "./components/Header";
 import AddWin from "./components/AddWin";
 import EditWin from "./components/EditWin";
-import { v4 as uuidv4 } from "uuid";
+import Win from "./components/Win";
 
 function App() {
   const [description, setDescription] = useState("learning");
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [userProfile, setUserProfile] = useState('');
   const [wins, setWins] = useState([
     {
       id: "1",
