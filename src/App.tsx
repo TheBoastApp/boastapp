@@ -52,7 +52,7 @@ function App() {
   const showWins = true;
   return (
     <div className="App bg-blue-400 min-h-screen">
-      <Header />
+      <Header loggedIn={loggedIn} userProfile={false}/>
       <AddWin newWin={newWin} />
       {showWins ? (
         <>

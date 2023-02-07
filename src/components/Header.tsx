@@ -18,8 +18,6 @@ function classNames(...classes: any[]) {
 }
 
 const Header = (props: any) => {
-  const [loggedIn, setLoggedIn] = useState(false);
-  const [userProfile, setUserProfile] = useState('');
   const defaultProfilePic = 'profile_icon.png';
 
   return (
@@ -83,7 +81,7 @@ const Header = (props: any) => {
 
                 {/* Profile dropdown */}
                 <Menu as="div" className="relative ml-3">
-                <ProfileButton src={loggedIn? userProfile : defaultProfilePic} alt={loggedIn? 'loggedIn' : 'notLoggedIn'} />
+                <ProfileButton src={props.loggedIn? props.userProfile : defaultProfilePic} alt={props.loggedIn? 'loggedIn' : 'notLoggedIn'} />
                   <div>
                     <Menu.Button className="flex rounded-full bg-purple-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                       <span className="sr-only">Open user menu</span>
