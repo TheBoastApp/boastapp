@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import Modal from "react-bootstrap/Modal";
 
-function EditWin(props: any) {
-  const [name, setName] = useState(props.name);
-  const [description, setDescription] = useState(props.description);
+function AddWin(props: any) {
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
 
   const [show, setShow] = useState(false);
 
@@ -14,9 +14,9 @@ function EditWin(props: any) {
     <>
       <button
         onClick={handleShow}
-        className="px-3 py-1 text-sm text-purple-600 font-semibold rounded-full border border-purple-200 hover:text-white hover:bg-purple-600 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-offset-2"
+        className="block m-2 mx-auto shadow bg-purple-500 hover:bg-purple-600 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-3 rounded"
       >
-        Update
+        + Add win
       </button>
 
       <Modal
@@ -26,16 +26,16 @@ function EditWin(props: any) {
         keyboard={false}
       >
         <Modal.Header closeButton>
-          <Modal.Title>Update win</Modal.Title>
+          <Modal.Title>Add win</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <form
             onSubmit={(e) => {
               handleClose();
               e.preventDefault();
-              props.updateWin(props.id, name, description);
+              props.newWin(name, description);
             }}
-            id="editmodal"
+            id="addmodal"
             className="w-full max-w-sm"
           >
             <div className="md:flex md:items-center mb-6">
@@ -51,6 +51,7 @@ function EditWin(props: any) {
                 <input
                   className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
                   id="winName"
+                  placeholder="Made partner"
                   type="text"
                   value={name}
                   onChange={(e) => {
@@ -72,6 +73,7 @@ function EditWin(props: any) {
                 <input
                   className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
                   id="description"
+                  placeholder="Wore a suit many times"
                   type="text"
                   value={description}
                   onChange={(e) => {
@@ -91,9 +93,9 @@ function EditWin(props: any) {
           </button>
           <button
             className="shadow bg-purple-500 hover:bg-purple-600 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-3 rounded"
-            form="editmodal"
+            form="addmodal"
           >
-            Update
+            + Add win
           </button>
         </Modal.Footer>
       </Modal>
@@ -101,4 +103,4 @@ function EditWin(props: any) {
   );
 }
 
-export default EditWin;
+export default AddWin;

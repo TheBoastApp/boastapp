@@ -2,29 +2,30 @@ import React from "react";
 import "./index.css";
 import Win from "./components/Win";
 import { useState } from "react";
-// import { v4 as uuidv4 } from "uuid";
+import AddWin from "./components/AddWin";
+import { v4 as uuidv4 } from "uuid";
 
 function App() {
   const [description, setDescription] = useState("learning");
   const [wins, setWins] = useState([
     {
-      id: 1,
+      id: "1",
       name: "Learned React",
       description: "Watched literally so much YouTube",
     },
     {
-      id: 2,
+      id: "2",
       name: "Made a webapp",
       description: "Sweating and crying",
     },
     {
-      id: 3,
+      id: "3",
       name: "Fell asleep doing homework",
       description: "oops",
     },
   ]);
 
-  function updateWin(id: number, newName: string, newDescription: string) {
+  function updateWin(id: string, newName: string, newDescription: string) {
     const updatedWins = wins.map((win) => {
       if (id === win.id) {
         return { ...win, name: newName, description: newDescription };
@@ -34,9 +35,19 @@ function App() {
     setWins(updatedWins);
   }
 
+  function newWin(name: string, description: string) {
+    const newWin = {
+      id: uuidv4(),
+      name: name,
+      description: description,
+    };
+    setWins([...wins, newWin]);
+  }
+
   const showWins = true;
   return (
     <div className="App">
+      <AddWin newWin={newWin} />
       {showWins ? (
         <>
           <input
