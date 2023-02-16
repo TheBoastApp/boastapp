@@ -93,15 +93,6 @@
           ]
         }
       ]
-    },
-    {
-      "firstName": "Kat",
-      "lastName": "Kime",
-      "email": "coolbeans@gmail.com",
-      "password": "l;jkadl;kajdfd",
-      "profilePic": "C:\\fakepath\\PXL_20220920_202913505(1).jpg",
-      "positions": [],
-      "id": 3
     }
   ]
 }
