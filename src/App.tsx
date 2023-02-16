@@ -10,7 +10,31 @@ const unknownUser = {
   email: "@gmail.com",
   password: "",
   profilePic: "",
-  positions: []};
+  positions: []
+};
+
+const NewWinForm = () => {
+  return (
+    <div style={{ marginLeft: '100px' }}>
+      <form>
+        <input
+          value='enter your win...'
+          style={{ width: '1000px', marginBottom: '20px'}}
+          /><br />
+        <label>Position: </label>
+        <select style={{marginRight: '20px'}}>
+          <option value='None'>Select a Position</option>
+          <option value='Volvo'>Volvo</option>
+        </select>
+        <label>Goal: </label>
+        <select>
+          <option value='None'>Select a Goal</option>
+          <option value='Volvo'>Volvo</option>
+        </select>
+      </form>
+    </div>
+  );
+}
 
 const App = () => {
   const [user, setUser] = useState(unknownUser);
@@ -18,7 +42,8 @@ const App = () => {
   return (
     <div>
       <Header user={user} setUser={setUser} />
-      <p>{user.firstName.length > 0 ? `Hello ${user.firstName}` : ''}</p>
+      <h2 className="mainWinFormTitle">What's your latest win?</h2>
+      <NewWinForm />
     </div>
   );
 }
