@@ -1,3 +1,65 @@
+/*
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+*/
+
+.appTitle {
+  display:inline-block;
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+.mainWinFormTitle {
+  margin-left: 100px;
+  margin-top: 200px;
+  font-size: xxx-large;
+}
+/*
+  Profile Picture
+*/
+.avatar {
+  vertical-align: middle;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  float: right;
+  display:inline-block;
+  margin-top: 20px;
+  margin-right: 20px;
+}
+
+/*
+  >>> LOG-IN MODAL
+*/
+
+.loginModal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loginModalContent {
+  width: 500px;
+  background-color: #fff;
+}
+
+.loginModalHeader, .loginModalFooter {
+  padding: 10px;
+}
+
+.loginModalTitle {
+  margin: 0;
+}
+
+.loginModalBody {
+  padding: 10px;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+}

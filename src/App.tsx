@@ -1,95 +1,30 @@
-import React from "react";
-import "./index.css";
-import Win from "./components/Win";
-import { useState } from "react";
-import Header from "./components/Header";
-import AddWin from "./components/AddWin";
-import EditWin from "./components/EditWin";
-import { v4 as uuidv4 } from "uuid";
+import React from 'react';
 
-function App() {
-  const [description, setDescription] = useState("learning");
-  const [wins, setWins] = useState([
-    {
-      id: "1",
-      name: "Learned React",
-      description: "Watched literally so much YouTube",
-    },
-    {
-      id: "2",
-      name: "Made a webapp",
-      description: "Sweating and crying",
-    },
-    {
-      id: "3",
-      name: "Fell asleep doing homework",
-      description: "oops",
-    },
-  ]);
+import { useState } from 'react';
 
-  function updateWin(id: string, newName: string, newDescription: string) {
-    const updatedWins = wins.map((win) => {
-      if (id === win.id) {
-        return { ...win, name: newName, description: newDescription };
-      }
-      return win;
-    });
-    setWins(updatedWins);
-  }
+import Header from './components/HeaderComponent/Header';
+import MainNewWinForm from './components/MainNewWinComponent/MainNewWinForm';
+import { User } from './types';
 
-  function newWin(name: string, description: string) {
-    const newWin = {
-      id: uuidv4(),
-      name: name,
-      description: description,
-    };
-    setWins([...wins, newWin]);
-  }
+import './index.css';
 
-  const showWins = true;
+const unknownUser: User = {
+  firstName: "",
+  lastName: "",
+  email: "",
+  password: "",
+  profilePic: "",
+  positions: []
+};
+
+const App = () => {
+  const [user, setUser] = useState<User>(unknownUser);
+
   return (
-    <div className="App bg-blue-400 min-h-screen">
-      <Header />
-      <AddWin newWin={newWin} />
-      {showWins ? (
-        <>
-          <div className="flex flex-wrap justify-center my-2">
-            {wins.map((win) => {
-              const editWin = (
-                <EditWin
-                  id={win.id}
-                  name={win.name}
-                  description={win.description}
-                  updateWin={updateWin}
-                />
-              );
-              return (
-                <Win
-                  key={win.id}
-                  id={win.id}
-                  name={win.name}
-                  description={win.description}
-                  editWin={editWin}
-                />
-              );
-            })}
-          </div>
-        </>
-      ) : (
-        <p>you can't see the win</p>
-      )}
-
-      <p>
-        Edit <code>src/App.tsx</code> and save to reload.
-      </p>
-      <a
-        className="App-link"
-        href="https://reactjs.org"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Learn React
-      </a>
+    <div>
+      <Header user={user} setUser={setUser} />
+      <h2 className="mainWinFormTitle">What's your latest win?</h2>
+      <MainNewWinForm user={user} setUser={setUser} />
     </div>
   );
 }

@@ -4,6 +4,9 @@
       "id": 1,
       "firstName": "Katasha",
       "lastName": "Kime",
+      "email": "katckime@gmail.com",
+      "password": "kowabunga",
+      "profilePic": "",
       "positions": [
         {
           "id": 1,
@@ -12,10 +15,29 @@
           "goals": [
             {
               "id": 1,
-              "wins": []
+              "content": "Migrate HomeStory pipeline into data lake ",
+              "wins": [
+                {
+                  "id": 1,
+                  "content": "Wrote intial code"
+                },
+                {
+                  "id": 2,
+                  "content": "Got senior engineers' OK on code"
+                },
+                {
+                  "id": 3,
+                  "content": "Ate lots of food"
+                },
+                {
+                  "id": 4,
+                  "content": "Some cool stuff"
+                }
+              ]
             }
           ]
-        }, {
+        },
+        {
           "id": 2,
           "title": "Software Development Engineer Intern",
           "company": "Zillow",
@@ -25,9 +47,10 @@
               "content": "Migrate HomeStory pipeline into data lake ",
               "wins": [
                 {
-                  "id" : 1,
+                  "id": 1,
                   "content": "Wrote intial code"
-                }, {
+                },
+                {
                   "id": 2,
                   "content": "Got senior engineers' OK on code"
                 }
@@ -36,10 +59,14 @@
           ]
         }
       ]
-    }, {
+    },
+    {
       "id": 2,
-      "fistName": "Hannah",
+      "firstName": "Hannah",
       "lastName": "Ryan",
+      "email": "hannnnnnnnnnah@gmail.com",
+      "password": "awesomesauce",
+      "profilePic": "",
       "positions": [
         {
           "id": 1,
@@ -51,16 +78,18 @@
               "content": "Build aggregation system for security data",
               "wins": [
                 {
-                  "id" : 1,
+                  "id": 1,
                   "content": "Implemented CI/CD for devlopment workflow"
-                }, {
+                },
+                {
                   "id": 2,
                   "content": "Got senior engineers' OK on system design"
                 }
               ]
             }
           ]
-        }, {
+        },
+        {
           "id": 2,
           "title": "Software Engineer Intern",
           "company": "PwC Labs",
@@ -70,9 +99,10 @@
               "content": "Develop search feature for flagship app",
               "wins": [
                 {
-                  "id" : 1,
+                  "id": 1,
                   "content": "Pushed search functionality to master"
-                }, {
+                },
+                {
                   "id": 2,
                   "content": "Refactored code to make more portable"
                 }
