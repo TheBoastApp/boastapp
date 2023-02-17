@@ -61,7 +61,6 @@ const MainNewWinForm = ( props: { user: User, setUser: any } ) => {
   */
   const handleNewWinSubmit = ( event: any ) => {
     event.preventDefault();
-    console.log(`Submitting:\npositionID:${positionID}\ngoalID:${goalID}\nwin:${win}`);
 
     // grab the goal and position objects
     const currentPosition : Position | undefined =
@@ -78,11 +77,14 @@ const MainNewWinForm = ( props: { user: User, setUser: any } ) => {
         content: win
       }
 
-      console.log('new win object:', newWinObject);
+      console.log(
+        `Adding new win to position: ${currentPosition.title}
+        and goal: ${currentGoal.title} - `);
+
+      console.log(newWinObject);
 
       // concat new win object to wins array
       const newWins : Win[] = currentGoal[WINS].concat(newWinObject);
-      console.log('new wins:', newWins);
 
       // create new goal object that contains everything, but change wins
       const changedGoal : Goal = {
@@ -101,15 +103,11 @@ const MainNewWinForm = ( props: { user: User, setUser: any } ) => {
         goals: newGoals
       };
 
-      console.log('new position:', changedPosition);
-
       // concat new position object to positions array
       const newPositions : Position[] =
         userPositions
           .filter( position => position.id !== positionID )
           .concat(changedPosition);
-
-      console.log('new positions:', newPositions);
 
       // create a new user object with new positions
       const newUserObject : User = {
@@ -123,10 +121,11 @@ const MainNewWinForm = ( props: { user: User, setUser: any } ) => {
           .updateUser(props.user.id, newUserObject)
           .then(response => {
             props.setUser(response);
-            setWin('');
           });
       }
     }
+
+    setWin('');
   }
 
   return (

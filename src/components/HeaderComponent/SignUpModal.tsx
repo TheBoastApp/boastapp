@@ -135,6 +135,7 @@ const SignUpModal = (props: {
     }
 
     // make a POST request to DB with new user object
+    console.log('Creating new user:', newUserObject);
     userService
       .createUser(newUserObject)
       .then(returnedUser => {
