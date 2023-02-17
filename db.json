@@ -15,7 +15,25 @@
           "goals": [
             {
               "id": 1,
-              "wins": []
+              "content": "Migrate HomeStory pipeline into data lake ",
+              "wins": [
+                {
+                  "id": 1,
+                  "content": "Wrote intial code"
+                },
+                {
+                  "id": 2,
+                  "content": "Got senior engineers' OK on code"
+                },
+                {
+                  "id": 3,
+                  "content": "Ate lots of food"
+                },
+                {
+                  "id": 4,
+                  "content": "Some cool stuff"
+                }
+              ]
             }
           ]
         },

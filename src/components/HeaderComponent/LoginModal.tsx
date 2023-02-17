@@ -1,17 +1,21 @@
 import { useState } from 'react';
 
-import axios from 'axios';
+import userService from '../../services/userService';
+import { User } from '../../types';
 
-// capture input fields
-// when login is captured, do a DB search
-// set current user to login fields
+/*
+  Component that returns a form for users to login
 
+  Captures entered information and uses states to sends
+  the captured information back to LoginModal component
+*/
 const LoginForm = (props: {
   email: string,
   setEmail: any,
   password: string,
   setPassword: any }) => {
 
+// on change handlers to capture info entered into form fields
   const handleEmailOnChange = (event: any) => {
     props.setEmail(event.target.value);
   };
@@ -42,40 +46,56 @@ const LoginForm = (props: {
   );
 }
 
-// if click sign up, show sign up modal
+/*
+  Main component that contains login functionality
+  Rendered by Header component
+*/
 const LoginModal = (props: {
   showLoginModal: boolean,
   setShowLoginModal: any,
   setShowSignUpModal: any,
-  user: object,
+  user: User,
   setUser: any }) => {
 
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+  const [loginError, setLoginError] = useState<boolean>(false);
   // console.log('User:', props.user);
 
+// if user clicks out, get rid of modal and clear fields
   const handleLoginClose = () => {
     props.setShowLoginModal(false);
     setEmail('');
     setPassword('');
   };
 
+  /*
+    Captures login information to make a GET request to the
+    DB, then populates the application's user state
+    with the returned user
+  */
   const handleLoginClick = () => {
     // make a GET request to the DB
-    axios
-      .get(`http://localhost:3001/users?email=${email}`)
-      .then(response => {
-        const returnedUser = response.data[0];
-        if (returnedUser.password === password) {
-          props.setUser(returnedUser);
-        }
-      });
+    userService
+      .getUser(email, password)
+      .then(
+        returnedUser => {
+          if (returnedUser) {
+            props.setUser(returnedUser);
+            console.log('returned user:', returnedUser);
+            setLoginError(false);
+            props.setShowLoginModal(false);
+          } else {
+            console.log('user not found');
+            setLoginError(true);
+          }
+        });
 
     setEmail('');
     setPassword('');
-
   };
 
+// if user chooses to sign up, display sign up modal
   const handleSignUpClick = () => {
     props.setShowLoginModal(false);
     props.setShowSignUpModal(true);
@@ -97,6 +117,9 @@ const LoginModal = (props: {
             password={password}
             setPassword={setPassword}
             />
+            {loginError &&
+              <p>Login credentials incorrect. Please try again.</p>
+            }
           </div>
         </div>
         <div className='loginModalFooter'>

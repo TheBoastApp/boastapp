@@ -1,24 +1,30 @@
 import React from 'react';
 
 import { useState } from 'react';
+
 import Header from './components/HeaderComponent/Header';
+import MainNewWinForm from './components/MainNewWinComponent/MainNewWinForm';
+import { User } from './types';
+
 import './index.css';
 
-const unknownUser = {
+const unknownUser: User = {
   firstName: "",
   lastName: "",
-  email: "@gmail.com",
+  email: "",
   password: "",
   profilePic: "",
-  positions: []};
+  positions: []
+};
 
 const App = () => {
-  const [user, setUser] = useState(unknownUser);
+  const [user, setUser] = useState<User>(unknownUser);
 
   return (
     <div>
       <Header user={user} setUser={setUser} />
-      <p>{user.firstName.length > 0 ? `Hello ${user.firstName}` : ''}</p>
+      <h2 className="mainWinFormTitle">What's your latest win?</h2>
+      <MainNewWinForm user={user} setUser={setUser} />
     </div>
   );
 }

@@ -1,8 +1,17 @@
-import { useState } from 'react';
 import React from 'react';
-
 import axios from 'axios';
 
+import { useState } from 'react';
+
+import userService from '../../services/userService';
+import { User } from '../../types';
+
+/*
+  Component that returns a form for users to create a new account
+
+  Captures entered information and uses states to sends
+  the captured information back to SignUpModal component
+*/
 const SignUpForm = (props: {
   firstName: string,
   setFirstName: any,
@@ -15,6 +24,11 @@ const SignUpForm = (props: {
   profilePic: string,
   setProfilePic: any }) => {
 
+
+  /*
+    onChange handlers to grab entered information and send
+    back to SignUpModal component
+  */
   const handleFirstNameOnChange = (event: any) => {
     props.setFirstName(event.target.value);
   };
@@ -32,7 +46,7 @@ const SignUpForm = (props: {
     props.setProfilePic(event.target.value);
   }
 
-
+  // return a form back to SignUpModal
   return (
     <form onSubmit={() => console.log('hello!')}>
       <label htmlFor='firstName'>First Name: </label>
@@ -80,7 +94,11 @@ const SignUpForm = (props: {
   );
 }
 
-
+/*
+  Main component that contains functionality to create an account
+  Uses form to capture information, then uses states to send captured information
+  back to Header >> App component
+*/
 const SignUpModal = (props: {
     showSignUpModal: boolean,
     setShowSignUpModal: any,
@@ -90,12 +108,12 @@ const SignUpModal = (props: {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [profilePic, setProfilePic] = useState('');
-  // console.log(`firstName: ${firstName}\nlastName: ${lastName}\nEmail: ${email}\npassword: ${password}\nprofilePic: ${profilePic}`);
 
   if (!props.showSignUpModal) {
     return null;
   }
 
+// if user clicks out, get rid of modal and clear form fields
   const handleSignUpClose = () => {
     props.setShowSignUpModal(false);
     setFirstName('');
@@ -106,8 +124,8 @@ const SignUpModal = (props: {
   }
 
   const handleSignUpClick = () => {
-    // make a POST request to the DB
-    const newUserObject = {
+    // use captured information to create a new user
+    const newUserObject: User = {
       firstName: firstName,
       lastName: lastName,
       email: email,
@@ -116,12 +134,15 @@ const SignUpModal = (props: {
       positions: []
     }
 
-    axios
-      .post('http://localhost:3001/users', newUserObject)
-      .then(response => {
-        props.setUser(response.data);
+    // make a POST request to DB with new user object
+    userService
+      .createUser(newUserObject)
+      .then(returnedUser => {
+        props.setUser(returnedUser);
+        console.log('new user:', returnedUser);
       });
 
+    // get rid of sign up modal and clear form fields
     props.setShowSignUpModal(false);
     setFirstName('');
     setLastName('');
@@ -130,6 +151,7 @@ const SignUpModal = (props: {
     setProfilePic('');
   };
 
+// sign up div container
   return (
     <div className='loginModal' onClick={handleSignUpClose}>
       <div className='loginModalContent' onClick={e => e.stopPropagation()}>
