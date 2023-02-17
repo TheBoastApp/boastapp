@@ -1,6 +1,6 @@
 import axios from 'axios';
+import constants from './serviceConstants';
 
-const baseUrl = 'http://localhost:3001/users';
 const POSITIONS = 'positions';
 
 const getAllPositions = ( email: string ) => {
@@ -8,7 +8,7 @@ const getAllPositions = ( email: string ) => {
     This needs to be completed.
   */
   return axios
-          .get(`${baseUrl}?email=${email}`)
+          .get(`${constants.BASE_URL}?email=${email}`)
           .then(response => response.data[0])
           .then(data => data[POSITIONS]);
 };

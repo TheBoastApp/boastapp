@@ -1,10 +1,10 @@
 import axios from 'axios';
 import { User } from '../types';
 
-const baseUrl = 'http://localhost:3001/users';
+import constants from './serviceConstants';
 
 const getUser = (email: string, password: string) : Promise<void | User> => {
-  return axios.get(`${baseUrl}?email=${email}`)
+  return axios.get(`${constants.BASE_URL}?email=${email}`)
                           .then(response => {
                             const returnedUser = response.data[0];
                             if (returnedUser && returnedUser.password === password) {
@@ -14,12 +14,12 @@ const getUser = (email: string, password: string) : Promise<void | User> => {
 };
 
 const createUser = ( newUser: User ) => {
-  return axios.post(baseUrl, newUser).then(response => response.data);
+  return axios.post(constants.BASE_URL, newUser).then(response => response.data);
 };
 
 const updateUser = ( userID: number, userObject: User ) => {
   return axios
-          .put(`${baseUrl}/${userID}`, userObject)
+          .put(`${constants.BASE_URL}/${userID}`, userObject)
           .then(response => response);
 };
 

@@ -1,6 +1,6 @@
 import axios from 'axios';
+import constants from './serviceConstants';
 
-const baseUrl = 'http://localhost:3001/users';
 const GOALS = 'goals';
 
 const getAllGoals = ( email: string, position: number ) => {
