@@ -79,7 +79,7 @@ const MainNewWinForm = ( props: { user: User, setUser: any } ) => {
 
       console.log(
         `Adding new win to position: ${currentPosition.title}
-        and goal: ${currentGoal.title} - `);
+        and goal: ${currentGoal.content} - `);
 
       console.log(newWinObject);
 
