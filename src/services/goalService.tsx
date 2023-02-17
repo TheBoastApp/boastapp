@@ -1,8 +1,9 @@
 import axios from 'axios';
 
 const baseUrl = 'http://localhost:3001/users';
+const GOALS = 'goals';
 
-const getAllGoals = () => {
+const getAllGoals = ( email: string, position: number ) => {
 
 };
 

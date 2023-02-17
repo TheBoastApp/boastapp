@@ -4,6 +4,7 @@ import axios from 'axios';
 import { useState } from 'react';
 
 import userService from '../../services/userService';
+import { User } from '../../types';
 
 /*
   Component that returns a form for users to create a new account
@@ -124,7 +125,7 @@ const SignUpModal = (props: {
 
   const handleSignUpClick = () => {
     // use captured information to create a new user
-    const newUserObject = {
+    const newUserObject: User = {
       firstName: firstName,
       lastName: lastName,
       email: email,

@@ -2,8 +2,9 @@ import { useState } from 'react';
 
 import LoginModal from './LoginModal';
 import SignUpModal from './SignUpModal';
+import { User } from '../../types';
 
-const ProfilePic = (props: { user: object, setShowLoginModal: any }) => {
+const ProfilePic = (props: { user: User, setShowLoginModal: any }) => {
   return (
     <img
       className='avatar'
@@ -13,9 +14,9 @@ const ProfilePic = (props: { user: object, setShowLoginModal: any }) => {
   );
 }
 
-const Header = (props: { user: object, setUser: any }) => {
-  const [showLoginModal, setShowLoginModal] = useState(false);
-  const [showSignUpModal, setShowSignUpModal] = useState(false);
+const Header = (props: { user: User, setUser: any }) => {
+  const [showLoginModal, setShowLoginModal] = useState<boolean>(false);
+  const [showSignUpModal, setShowSignUpModal] = useState<boolean>(false);
 
   return (
     <div>

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 import userService from '../../services/userService';
+import { User } from '../../types';
 
 /*
   Component that returns a form for users to login
@@ -53,12 +54,12 @@ const LoginModal = (props: {
   showLoginModal: boolean,
   setShowLoginModal: any,
   setShowSignUpModal: any,
-  user: object,
+  user: User,
   setUser: any }) => {
 
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [loginError, setLoginError] = useState(false);
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+  const [loginError, setLoginError] = useState<boolean>(false);
   // console.log('User:', props.user);
 
 // if user clicks out, get rid of modal and clear fields

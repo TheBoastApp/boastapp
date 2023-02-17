@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 const baseUrl = 'http://localhost:3001/users';
+const ID = 'id';
 
 const getAllWins = () => {
   /*
@@ -14,13 +15,13 @@ const getWin = () => {
   */
 };
 
-const createWin = () => {
-  /*
-    This needs to be completed.
-  */
+const createWin = ( ) => {
+
 };
 
 const updateWin = () => {
+  // create a new user object with all the information
+  //
   /*
     This needs to be completed.
   */
