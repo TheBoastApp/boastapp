@@ -1,11 +1,5 @@
-/*
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-*/
-
 .appTitle {
-  display:inline-block;
+  display: inline-block;
   margin-top: 20px;
   margin-left: 20px;
 }
@@ -24,7 +18,7 @@
   height: 50px;
   border-radius: 50%;
   float: right;
-  display:inline-block;
+  display: inline-block;
   margin-top: 20px;
   margin-right: 20px;
 }
@@ -50,7 +44,8 @@
   background-color: #fff;
 }
 
-.loginModalHeader, .loginModalFooter {
+.loginModalHeader,
+.loginModalFooter {
   padding: 10px;
 }
 
