@@ -2,17 +2,8 @@ import { useState } from 'react';
 
 import LoginModal from './LoginModal';
 import SignUpModal from './SignUpModal';
+import ProfileNav from './ProfileNavComponent/ProfileNav';
 import { User } from '../../types';
-
-const ProfilePic = (props: { user: User, setShowLoginModal: any }) => {
-  return (
-    <img
-      className='avatar'
-      src='defaultProfilePic.png'
-      onClick={() => props.setShowLoginModal(true)}
-    />
-  );
-}
 
 const Header = (props: { user: User, setUser: any }) => {
   const [showLoginModal, setShowLoginModal] = useState<boolean>(false);
@@ -21,7 +12,7 @@ const Header = (props: { user: User, setUser: any }) => {
   return (
     <div>
     <h1 className='appTitle'>BOAST</h1>
-    <ProfilePic user={props.user} setShowLoginModal={setShowLoginModal} />
+    <ProfileNav user={props.user} setShowLoginModal={setShowLoginModal} />
     <LoginModal
       showLoginModal={showLoginModal}
       setShowLoginModal={setShowLoginModal}
