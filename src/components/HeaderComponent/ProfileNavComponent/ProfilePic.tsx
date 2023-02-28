@@ -1,13 +1,17 @@
 import { useState } from 'react';
 import { User } from '../../../types';
 
-const ProfilePic = (props: { user: User | undefined, setShowLoginModal: any }) => {
+const ProfilePic = (props: {
+  user: User | undefined,
+  setShowLoginModal: any,
+  setShowProfileModal: any
+}) => {
 
   const handleOnClick = () => {
     if (props.user == undefined) {
       props.setShowLoginModal(true);
     } else {
-      console.log('render profile menu');
+      props.setShowProfileModal(true);
     }
   };
 

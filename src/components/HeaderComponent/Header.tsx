@@ -8,11 +8,16 @@ import { User } from '../../types';
 const Header = (props: { user: User | undefined, setUser: any }) => {
   const [showLoginModal, setShowLoginModal] = useState<boolean>(false);
   const [showSignUpModal, setShowSignUpModal] = useState<boolean>(false);
+  const [showProfileModal, setShowProfileModal] = useState<boolean>(false);
 
   return (
     <div>
     <h1 className='appTitle'>BOAST</h1>
-    <ProfileNav user={props.user} setShowLoginModal={setShowLoginModal} />
+    <ProfileNav
+      user={props.user}
+      setShowLoginModal={setShowLoginModal}
+      showProfileModal={showProfileModal}
+      setShowProfileModal={setShowProfileModal}/>
     <LoginModal
       showLoginModal={showLoginModal}
       setShowLoginModal={setShowLoginModal}
