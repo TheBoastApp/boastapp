@@ -8,6 +8,7 @@ const ProfileNav = (props: { user: User, setShowLoginModal: any }) => {
   return (
     <div>
     <ProfilePic user={props.user} setShowLoginModal={props.setShowLoginModal} />
+    <ProfileMenu />
     </div>
   );
 };
