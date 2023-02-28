@@ -1,4 +1,13 @@
-const Root = () => {
+import { useEffect } from 'react';
+import { useOutletContext } from 'react-router-dom';
+
+import { useUser } from '../App';
+import { User } from '../types';
+
+const Main = () => {
+  const { user, setUser } = useUser();
+
+  console.log('user is:', user);
   return (
     <>
       <div id="sidebar">
@@ -42,4 +51,4 @@ const Root = () => {
   );
 }
 
-export default Root;
+export default Main;

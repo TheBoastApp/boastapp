@@ -1,17 +1,26 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+
 import App from "./App";
 import ErrorPage from './errorPage';
-import Root from './routes/root';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import Main from './routes/main';
+import MainNewWinForm from './components/MainNewWinComponent/MainNewWinForm';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Root />,
-    errorElement: <ErrorPage />
+    element: <App />,
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        path: '/',
+        element: <MainNewWinForm />
+      }
+    ],
   }
 ]);
 
