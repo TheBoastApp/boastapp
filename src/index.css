@@ -24,12 +24,16 @@
 }
 
 .profileMenu {
-  float: right;
-  margin-right: 20px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
 }
 
 .profileMenuContent {
   float: right;
+  margin-top: 70px;
   margin-right: 20px;
 }
 
