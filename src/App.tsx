@@ -6,8 +6,6 @@ import Header from './components/HeaderComponent/Header';
 import MainNewWinForm from './components/MainNewWinComponent/MainNewWinForm';
 import { User } from './types';
 
-import './index.css';
-
 const App = () => {
   const [user, setUser] = useState<User | undefined>();
 
