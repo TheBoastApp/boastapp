@@ -8,15 +8,6 @@ import { User } from './types';
 
 import './index.css';
 
-const unknownUser: User = {
-  firstName: "",
-  lastName: "",
-  email: "",
-  password: "",
-  profilePic: "",
-  positions: []
-};
-
 const App = () => {
   const [user, setUser] = useState<User | undefined>();
 
