@@ -4,7 +4,11 @@ import { User } from '../../../types';
 const ProfilePic = (props: { user: User | undefined, setShowLoginModal: any }) => {
 
   const handleOnClick = () => {
-    props.setShowLoginModal(true);
+    if (props.user == undefined) {
+      props.setShowLoginModal(true);
+    } else {
+      console.log('render profile menu');
+    }
   };
 
   return (
