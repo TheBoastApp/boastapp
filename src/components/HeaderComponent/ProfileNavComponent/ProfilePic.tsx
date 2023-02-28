@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { User } from '../../../types';
 
-const ProfilePic = (props: { user: User, setShowLoginModal: any }) => {
+const ProfilePic = (props: { user: User | undefined, setShowLoginModal: any }) => {
   return (
     <img
       className='avatar'

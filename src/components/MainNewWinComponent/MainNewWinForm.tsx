@@ -13,7 +13,7 @@ const GOALS = 'goals';
 const CONTENT = 'content';
 const WINS = 'wins';
 
-const MainNewWinForm = ( props: { user: User, setUser: any } ) => {
+const MainNewWinForm = ( props: { user: User | undefined, setUser: any } ) => {
   const [win, setWin] = useState<string>('enter your win...');
   const [positionID, setPositionID] = useState<number>(0);
   const [goalID, setGoalID] = useState<number>(0);
@@ -22,11 +22,13 @@ const MainNewWinForm = ( props: { user: User, setUser: any } ) => {
 
   // get all of user's positions
   useEffect(() => {
-    if (props.user.email !== '') {
-      console.log(props.user.email)
-      positionsService
-        .getAllPositions(props.user.email)
-        .then(returnedPositions => setUserPositions(returnedPositions));
+    if (props.user) {
+      if (props.user.email !== '') {
+        console.log(props.user.email)
+        positionsService
+          .getAllPositions(props.user.email)
+          .then(returnedPositions => setUserPositions(returnedPositions));
+      }
     }
   }, [props.user]);
 
@@ -61,71 +63,72 @@ const MainNewWinForm = ( props: { user: User, setUser: any } ) => {
   */
   const handleNewWinSubmit = ( event: any ) => {
     event.preventDefault();
+    if (props.user) {
+      // grab the goal and position objects
+      const currentPosition : Position | undefined =
+        userPositions.find( position => position[ID] === positionID );
 
-    // grab the goal and position objects
-    const currentPosition : Position | undefined =
-      userPositions.find( position => position[ID] === positionID );
+      const currentGoal : Goal | undefined =
+        goals.find( goal => goal[ID] === goalID );
 
-    const currentGoal : Goal | undefined =
-      goals.find( goal => goal[ID] === goalID );
+      if (currentPosition !== undefined && currentGoal !== undefined) {
 
-    if (currentPosition !== undefined && currentGoal !== undefined) {
+        // create new win object
+        const newWinObject : Win = {
+          id: currentGoal[WINS].length + 1,
+          content: win
+        }
 
-      // create new win object
-      const newWinObject : Win = {
-        id: currentGoal[WINS].length + 1,
-        content: win
+        console.log(
+          `Adding new win to position: ${currentPosition.title}
+          and goal: ${currentGoal.content} - `);
+
+        console.log(newWinObject);
+
+        // concat new win object to wins array
+        const newWins : Win[] = currentGoal[WINS].concat(newWinObject);
+
+        // create new goal object that contains everything, but change wins
+        const changedGoal : Goal = {
+          ... currentGoal,
+          wins: newWins
+        };
+
+        // concat new goals object to goals array
+        const newGoals : Goal[] = currentPosition[GOALS]
+                          .filter( goal => goal.id !== goalID )
+                          .concat(changedGoal);
+
+        // create new positions object that contains everything, but change goals
+        const changedPosition : Position = {
+          ... currentPosition,
+          goals: newGoals
+        };
+
+        // concat new position object to positions array
+        const newPositions : Position[] =
+          userPositions
+            .filter( position => position.id !== positionID )
+            .concat(changedPosition);
+
+        // create a new user object with new positions
+        const newUserObject : User = {
+          ... props.user,
+          positions: newPositions
+        };
+
+        // call DB with a PUT request
+        if (props.user.id) {
+          userService
+            .updateUser(props.user.id, newUserObject)
+            .then(response => {
+              props.setUser(response);
+            });
+        }
       }
 
-      console.log(
-        `Adding new win to position: ${currentPosition.title}
-        and goal: ${currentGoal.content} - `);
-
-      console.log(newWinObject);
-
-      // concat new win object to wins array
-      const newWins : Win[] = currentGoal[WINS].concat(newWinObject);
-
-      // create new goal object that contains everything, but change wins
-      const changedGoal : Goal = {
-        ... currentGoal,
-        wins: newWins
-      };
-
-      // concat new goals object to goals array
-      const newGoals : Goal[] = currentPosition[GOALS]
-                        .filter( goal => goal.id !== goalID )
-                        .concat(changedGoal);
-
-      // create new positions object that contains everything, but change goals
-      const changedPosition : Position = {
-        ... currentPosition,
-        goals: newGoals
-      };
-
-      // concat new position object to positions array
-      const newPositions : Position[] =
-        userPositions
-          .filter( position => position.id !== positionID )
-          .concat(changedPosition);
-
-      // create a new user object with new positions
-      const newUserObject : User = {
-        ... props.user,
-        positions: newPositions
-      };
-
-      // call DB with a PUT request
-      if (props.user.id) {
-        userService
-          .updateUser(props.user.id, newUserObject)
-          .then(response => {
-            props.setUser(response);
-          });
-      }
+      setWin('');
     }
-
-    setWin('');
   }
 
   return (

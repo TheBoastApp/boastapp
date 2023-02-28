@@ -4,7 +4,7 @@ import ProfilePic from './ProfilePic';
 import ProfileMenu from './ProfileMenu';
 import { User } from '../../../types';
 
-const ProfileNav = (props: { user: User, setShowLoginModal: any }) => {
+const ProfileNav = (props: { user: User | undefined, setShowLoginModal: any }) => {
   return (
     <div>
     <ProfilePic user={props.user} setShowLoginModal={props.setShowLoginModal} />

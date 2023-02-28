@@ -18,7 +18,7 @@ const unknownUser: User = {
 };
 
 const App = () => {
-  const [user, setUser] = useState<User>(unknownUser);
+  const [user, setUser] = useState<User | undefined>();
 
   return (
     <div>

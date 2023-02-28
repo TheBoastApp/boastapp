@@ -54,7 +54,7 @@ const LoginModal = (props: {
   showLoginModal: boolean,
   setShowLoginModal: any,
   setShowSignUpModal: any,
-  user: User,
+  user: User | undefined,
   setUser: any }) => {
 
   const [email, setEmail] = useState<string>('');

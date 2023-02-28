@@ -5,7 +5,7 @@ import SignUpModal from './SignUpModal';
 import ProfileNav from './ProfileNavComponent/ProfileNav';
 import { User } from '../../types';
 
-const Header = (props: { user: User, setUser: any }) => {
+const Header = (props: { user: User | undefined, setUser: any }) => {
   const [showLoginModal, setShowLoginModal] = useState<boolean>(false);
   const [showSignUpModal, setShowSignUpModal] = useState<boolean>(false);
 
