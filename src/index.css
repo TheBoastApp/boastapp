@@ -63,6 +63,24 @@
 }
 
 /*
+ * PROFILE PAGE COLUMNS
+ */
+ .leftProfileColumn {
+   float: left;
+   width: 30%;
+   padding: 10px;
+   background-color:#dde1e1;
+   margin-left: 30px;
+ }
+
+ .rightProfileColumn {
+   float: left;
+   width: 70%;
+   padding: 10px;
+   margin-left: 30px;
+ }
+
+/*
   >>> LOG-IN MODAL
 */
 

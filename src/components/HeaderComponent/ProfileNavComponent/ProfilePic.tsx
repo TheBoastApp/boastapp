@@ -15,13 +15,25 @@ const ProfilePic = (props: {
     }
   };
 
-  return (
-    <img
-      className='avatar'
-      src='defaultProfilePic.png'
-      onClick={handleOnClick}
-    />
-  );
+  if (props.user) {
+    return (
+      <img
+        className='avatar'
+        src={ props.user.profilePic !== ""
+          ? props.user.profilePic
+          : 'defaultProfilePic.png' }
+        onClick={handleOnClick}
+      />
+    );
+  } else {
+    return (
+      <img
+        className='avatar'
+        src='defaultProfilePic.png'
+        onClick={handleOnClick}
+      />
+    );
+  }
 };
 
 export default ProfilePic;

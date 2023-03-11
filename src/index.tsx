@@ -4,8 +4,8 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import App from "./App";
 import ErrorPage from './errorPage';
-import Main from './routes/main';
 import MainNewWinForm from './components/MainNewWinComponent/MainNewWinForm';
+import UserProfile from './routes/profile';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
@@ -19,7 +19,10 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <MainNewWinForm />
-      }
+      }, {
+        path: 'profile',
+        element: <UserProfile />
+      },
     ],
   }
 ]);
