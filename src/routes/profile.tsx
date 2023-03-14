@@ -4,38 +4,13 @@ import { useState, useEffect } from 'react';
 import { useUser } from '../App';
 import { User, Position, Goal, Win } from '../types';
 
-const ID = 'id';
-const TITLE = 'title';
-const COMPANY = 'company';
-const GOALS = 'goals';
-const CONTENT = 'content';
-const WINS = 'wins';
-const POSITIONS = 'positions';
+import PositionComponent from '../components/ProfileComponents/PositionComponent'
 
-// map user goals
-const mapPositionToGoals = ( position: Position ) => {
-  const goals: Goal[] = position[GOALS];
-
-  return (
-    <div key={'position ' + position[ID]}>
-      <h2 key={position[ID]}>{position[TITLE]}, {position[COMPANY]}</h2>
-        {goals.map(
-          goal => mapGoalToWins(goal)
-        )}
-    </div>
-  );
-}
-
-const mapGoalToWins = ( goal: Goal ) => {
-  const wins: Win[] = goal[WINS];
-  return (
-    <div key={'goal ' + goal[ID]}>
-      <h3 key={goal[ID]}>{goal.content}</h3>
-      {wins.map(
-        win => <p key={win[ID]}>{win.content}</p>
-      )}
-    </div>
-  );
+const ColumnProfilePicture = ( props: { user: User } ) => {
+  return <img
+    src={ props.user.profilePic !== "" ? props.user.profilePic : 'defaultProfilePic.png'}
+    style={{ borderRadius: '50%', maxWidth: 300 }}
+  />
 }
 
 const UserProfile = () => {
@@ -45,8 +20,7 @@ const UserProfile = () => {
   useEffect(
     () => {
       if (user) {
-        console.log(user);
-        setUserPositions(user[POSITIONS]);
+        setUserPositions(user.positions);
       }
     }, [user]
   );
@@ -55,16 +29,13 @@ const UserProfile = () => {
     return (
       <div style={{ display: 'flex', marginTop: '30px' }}>
         <div className="leftProfileColumn">
-          <img
-            src={ user.profilePic !== "" ? user.profilePic : 'defaultProfilePic.png'}
-            style={{ borderRadius: '50%', maxWidth: 300 }} 
-          />
+          <ColumnProfilePicture user={user} />
           <h1>{user.firstName} {user.lastName}</h1>
           <p>Placeholder for some content...</p>
         </div>
         <div className="rightProfileColumn">
           {userPositions.map(
-            position => mapPositionToGoals(position)
+            position => <PositionComponent key={position.id} position={position}/>
           )}
         </div>
       </div>
