@@ -127,6 +127,7 @@ const MainNewWinForm = ( ) => {
           userService
             .updateUser(user.id, newUserObject)
             .then(response => {
+              console.log('new user:', response);
               setUser(response);
             });
         }

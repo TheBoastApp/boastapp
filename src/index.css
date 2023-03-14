@@ -45,14 +45,14 @@
   background-color: #f1f1f1;
 }
 
-.profileMenuLinks a {
+.profileMenuLinks a, li {
   display: block;
   color: #000;
   padding: 8px 16px;
   text-decoration: none;
 }
 
-.profileMenuLinks a:hover {
+.profileMenuLinks a:hover, li:hover {
   background-color: #555;
   color: white;
 }
@@ -102,17 +102,19 @@
    background-color: #f1f1f1;
  }
 
- .contentMenuLinks a {
+ .contentMenuLinks li {
    display: block;
    color: #000;
    padding: 8px 16px;
    text-decoration: none;
  }
 
- .contentMenuLinks a:hover {
+ .contentMenuLinks li:hover {
    background-color: #555;
    color: white;
  }
+
+
 
 /*
   >>> LOG-IN MODAL
@@ -128,6 +130,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 99;
 }
 
 .loginModalContent {
