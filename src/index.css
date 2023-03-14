@@ -91,6 +91,7 @@
  .contentMenuContent {
    float: right;
    position: absolute;
+   z-index: 10;
  }
 
  .contentMenuLinks {

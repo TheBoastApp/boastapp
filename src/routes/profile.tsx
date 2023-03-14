@@ -31,7 +31,7 @@ const UserProfile = () => {
         <div className="leftProfileColumn">
           <ColumnProfilePicture user={user} />
           <h1>{user.firstName} {user.lastName}</h1>
-          <p>Placeholder for some content...</p>
+          <button onClick={() => console.log('add a new position')}>Add New Position</button>
         </div>
         <div className="rightProfileColumn">
           {userPositions.map(

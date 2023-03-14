@@ -2,17 +2,30 @@ import { useState } from 'react';
 
 const Menu = () => {
 
+  const handleEdit = () => {
+    console.log('edit this');
+  }
+
+  const handleDelete = () => {
+    console.log('delete this');
+  }
+
+  const handleAddWin = ( ) => {
+    console.log('delete this');
+  }
+
   return (
       <div className="contentMenuContent">
         <ul className="contentMenuLinks">
-          <li><a href="#">Edit</a></li>
-          <li ><a href="#">Delete</a></li>
+          <li><a href="#" onClick={handleEdit}>Edit</a></li>
+          <li><a href="#" onClick={handleDelete}>Delete</a></li>
+          <li><a href="#" onClick={handleAddWin}>Add Win</a></li>
         </ul>
       </div>
   );
 };
 
-const ContentEditMenu = (props: { showMenu: boolean, setShowMenu: any}) => {
+const GoalEditMenu = (props: { showMenu: boolean, setShowMenu: any}) => {
 
   return (
     <div style={{ display: 'inline-block', float: 'right', position: 'relative' }}>
@@ -27,4 +40,4 @@ const ContentEditMenu = (props: { showMenu: boolean, setShowMenu: any}) => {
   );
 };
 
-export default ContentEditMenu;
+export default GoalEditMenu;

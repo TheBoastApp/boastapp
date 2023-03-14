@@ -1,25 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 
 import { User, Position, Goal, Win } from '../../types';
-import ContentEditMenu from './ContentEditMenu';
-// TODO: Allow users to edit wins
-// Show ellipses on hover
-// When clicked, show menu
-
-const useOutsideAlerter = (ref: any) => {
-  useEffect(() => {
-    const handleClickOutside = ( event: any ) => {
-      if (ref.current && !ref.current.contains(event.target)) {
-        alert("You clicked outside of me!");
-      }
-    }
-
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    }
-  }, [ref]);
-}
+import WinEditMenu from './WinEditMenu';
 
 const WinComponent = ( props: { win: Win }) => {
   const [showEllipses, setShowEllipses] = useState(false);
@@ -27,7 +9,8 @@ const WinComponent = ( props: { win: Win }) => {
 
   const wrapperRef = useRef(null);
 
-  const useOutsideAlerter = (ref: any) => {
+  const useOutsideClose = (ref: any) => {
+
     useEffect(() => {
       const handleClickOutside = ( event: any ) => {
         if (ref.current && !ref.current.contains(event.target)) {
@@ -43,7 +26,7 @@ const WinComponent = ( props: { win: Win }) => {
     }, [ref]);
   }
 
-  useOutsideAlerter(wrapperRef);
+  useOutsideClose(wrapperRef);
 
   if (showEllipses) {
     return (
@@ -57,7 +40,7 @@ const WinComponent = ( props: { win: Win }) => {
         <p style={{ display: 'inline-block' }}>
         {props.win.content}
         </p>
-        <ContentEditMenu showMenu={showMenu} setShowMenu={setShowMenu}/>
+        <WinEditMenu showMenu={showMenu} setShowMenu={setShowMenu}/>
       </div>
     );
   }
