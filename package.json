@@ -52,5 +52,10 @@
   "devDependencies": {
     "@types/uuid": "^9.0.0",
     "json-server": "^0.17.1"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "axios": "axios/dist/node/axios.cjs"
+    }
   }
 }
