@@ -1,7 +1,7 @@
 .appTitle {
   display: inline-block;
   margin-top: 20px;
-  margin-left: 20px;
+  margin-left: 30px;
 }
 
 .mainWinFormTitle {
@@ -10,7 +10,7 @@
   font-size: xxx-large;
 }
 /*
-  Profile Picture
+  Profile Nav Component
 */
 .avatar {
   vertical-align: middle;
@@ -19,9 +19,102 @@
   border-radius: 50%;
   float: right;
   display: inline-block;
-  margin-top: 20px;
+  margin-top: -60px;
+  margin-right: 30px;
+}
+
+.profileMenu {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.profileMenuContent {
+  float: right;
+  margin-top: 70px;
   margin-right: 20px;
 }
+
+.profileMenuLinks {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  width: 200px;
+  background-color: #f1f1f1;
+}
+
+.profileMenuLinks a, li {
+  display: block;
+  color: #000;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+.profileMenuLinks a:hover, li:hover {
+  background-color: #555;
+  color: white;
+}
+
+.active {
+  background-color: #04AA6D;
+  color: white;
+}
+
+/*
+ * PROFILE PAGE
+ */
+ .leftProfileColumn {
+   float: left;
+   width: 30%;
+   padding: 10px;
+   background-color:#dde1e1;
+   margin-left: 30px;
+ }
+
+ .rightProfileColumn {
+   float: left;
+   width: 70%;
+   padding: 10px;
+   margin-left: 30px;
+ }
+
+ .dot {
+  height: 5px;
+  width: 5px;
+  background-color: #c1c8c8;
+  border-radius: 50%;
+  display: inline-block;
+ }
+
+ .contentMenuContent {
+   float: right;
+   position: absolute;
+   z-index: 10;
+ }
+
+ .contentMenuLinks {
+   list-style-type: none;
+   padding: 0;
+   margin: 0;
+   width: 200px;
+   background-color: #f1f1f1;
+ }
+
+ .contentMenuLinks li {
+   display: block;
+   color: #000;
+   padding: 8px 16px;
+   text-decoration: none;
+ }
+
+ .contentMenuLinks li:hover {
+   background-color: #555;
+   color: white;
+ }
+
+
 
 /*
   >>> LOG-IN MODAL
@@ -37,6 +130,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 99;
 }
 
 .loginModalContent {

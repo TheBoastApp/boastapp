@@ -9,45 +9,6 @@
       "profilePic": "kat_kime_profile.jpeg",
       "positions": [
         {
-          "id": 2,
-          "title": "Software Development Engineer Intern",
-          "company": "Zillow",
-          "goals": [
-            {
-              "id": 1,
-              "content": "Migrate HomeStory pipeline into data lake updated",
-              "wins": [
-                {
-                  "id": 1,
-                  "content": "Wrote intial code"
-                },
-                {
-                  "id": 2,
-                  "content": "Ate lots of food"
-                },
-                {
-                  "id": 3,
-                  "content": "Some Cool Stuff"
-                },
-                {
-                  "id": 4,
-                  "content": "something"
-                }
-              ]
-            },
-            {
-              "id": 2,
-              "content": "Build new feature",
-              "wins": [
-                {
-                  "id": 1,
-                  "content": "Add initial design"
-                }
-              ]
-            }
-          ]
-        },
-        {
           "id": 1,
           "title": "Software Engineer Intern",
           "company": "LinkedIn",
@@ -61,16 +22,16 @@
                   "content": "Wrote intial code and stuff"
                 },
                 {
+                  "id": 2,
+                  "content": "Got senior engineers' OK on code"
+                },
+                {
                   "id": 3,
                   "content": "Created an MVP for review amongst other things"
                 },
                 {
                   "id": 4,
                   "content": "Met with stakeholders and friends"
-                },
-                {
-                  "id": 5,
-                  "content": "Adding some more code to the feature"
                 }
               ]
             }
@@ -78,9 +39,28 @@
         },
         {
           "id": 2,
-          "title": "Queen of the World",
-          "company": "The World",
-          "goals": []
+          "title": "Software Development Engineer Intern",
+          "company": "Zillow",
+          "goals": [
+            {
+              "id": 1,
+              "content": "Migrate HomeStory pipeline into data lake ",
+              "wins": [
+                {
+                  "id": 1,
+                  "content": "Wrote intial code"
+                },
+                {
+                  "id": 2,
+                  "content": "Ate lots of food"
+                },
+                {
+                  "id": 3,
+                  "content": "Some Cool Stuff"
+                }
+              ]
+            }
+          ]
         }
       ]
     },
