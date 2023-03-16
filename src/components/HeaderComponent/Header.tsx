@@ -12,9 +12,12 @@ const Header = (props: { user: User | undefined, setUser: any }) => {
 
   return (
     <div>
-    <h1 className='appTitle'>BOAST</h1>
+    <h1 className='appTitle'>
+      <a style={{ textDecoration: 'none', color: '#000000'}} href="/">BOAST</a>
+    </h1>
     <ProfileNav
       user={props.user}
+      setUser={props.setUser}
       setShowLoginModal={setShowLoginModal}
       showProfileModal={showProfileModal}
       setShowProfileModal={setShowProfileModal}/>
