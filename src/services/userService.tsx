@@ -20,7 +20,7 @@ const createUser = ( newUser: User ) => {
 const updateUser = ( userID: number, userObject: User ) => {
   return axios
           .put(`${constants.BASE_URL}/${userID}`, userObject)
-          .then(response => response);
+          .then(response => response.data);
 };
 
 const deleteUser = () => {

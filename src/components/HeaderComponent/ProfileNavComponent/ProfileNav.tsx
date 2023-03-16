@@ -6,6 +6,7 @@ import { User } from '../../../types';
 
 const ProfileNav = (props: {
   user: User | undefined,
+  setUser: any,
   setShowLoginModal: any,
   showProfileModal: boolean,
   setShowProfileModal: any
@@ -18,6 +19,7 @@ const ProfileNav = (props: {
       setShowProfileModal={props.setShowProfileModal}
       />
     <ProfileMenu
+      setUser={props.setUser}
       showProfileModal={props.showProfileModal}
       setShowProfileModal={props.setShowProfileModal}
       />
