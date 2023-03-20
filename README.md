@@ -7,7 +7,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 In the project directory, you can run:
 
 ### `npm run server`
-This starts the local database. Before running the local database, be sure to uncomment the localhost `BASE_URL` constant in the `src/services/serviceConstants.tsx` file, and comment the `vercel.app` `BASE_URL` constant.
+This starts the local database. Before running the local database, be sure to uncomment the localhost `BASE_URL` constant in the `src/services/serviceConstants.tsx` file, and comment the vercel.app `BASE_URL` constant.
 
 ### `npm start`
 
